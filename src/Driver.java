@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 class Driver {
@@ -26,12 +30,25 @@ class Driver {
     //hashset to store the game history
     private HashSet<Game> gameHistory = new HashSet<>();
 
+
+    private File storedData = new File("gameResults.txt"); // create a new file
+    //the operator of the file
+    private BufferedWriter out = new BufferedWriter(new FileWriter(storedData));
+
+    Driver() throws IOException {
+        if (!storedData.exists()) {
+            storedData.createNewFile();
+        }// if the fire not exists,create new one
+    }
+
+      //out.write("S"+s[runTimes]+", ");
+
     /**
      * a constructor to initialize the whole data
      *
      * @param participates get from data resource
      */
-    Driver(ArrayList<Participates> participates) {
+    Driver(ArrayList<Participates> participates) throws IOException {
         this.allParticipates = participates;
     }
 
