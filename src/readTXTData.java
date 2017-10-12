@@ -4,27 +4,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-
-/*
- * readTXTData Class
- *
- * This class is used to read data from csv data file
- *
- * Created by Ningqi Lu on 3/27/2017.
- * Modified by both Ningqi Lu and Yingzhi Lu
- */
-
 public class readTXTData {
 
-    public static final int COLUMN_NUM = 5;//the column of the csv file
+    public static final int COLUMN_NUM = 5;//the column of the txt file
     static ArrayList<String[]> lineList = new ArrayList<String[]>();// ArrayList used to store the row of txt file
 
 
     //read the exact csv file，restore data and return ArrayList
     public static void getTXTData() throws IOException {
 
-        BufferedReader br = new BufferedReader(new FileReader("participants.txt"));
-        String line = "";
+        BufferedReader br = new BufferedReader(new FileReader("src/participants.txt"));
+        String line;
         // Read a single line from the file until there are no more lines to read
         while ((line = br.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(line, ","); // using , to despite the content
@@ -43,14 +33,35 @@ public class readTXTData {
     }
 
     /**
-     * getter and setter of ArrayList lineList
-     * @return lineList
+     * A method to seperate data into their own class
+     * @return
      * @throws IOException
      */
-    public static ArrayList<String[]> getLineList() throws IOException {
+    public static ArrayList<Participates> seperateData() throws IOException{
+
+        //clean the line list and read again to prevent duplicate data
         lineList.clear();
         getTXTData();
-        return lineList;
+
+        //From previous Assignment
+        ArrayList<Participates> participates=new ArrayList<>();
+
+        //initialize the data form file
+        for (int i = 0; i < lineList.size(); i++) {
+            if(lineList.get(i)[4].equals("SWIMMER")){
+                    participates.add(new Swimmer(lineList.get(i)[0],lineList.get(i)[1],Integer.parseInt(lineList.get(i)[2]),lineList.get(i)[3]));
+            }else if(lineList.get(i)[4].equals("CYCLIST")){
+                    participates.add(new Cyclist(lineList.get(i)[0],lineList.get(i)[1],Integer.parseInt(lineList.get(i)[2]),lineList.get(i)[3]));
+            }else if(lineList.get(i)[4].equals("SPRINTER")){
+                    participates.add(new Sprinter(lineList.get(i)[0],lineList.get(i)[1],Integer.parseInt(lineList.get(i)[2]),lineList.get(i)[3]));
+            }else if(lineList.get(i)[4].equals("SUPERATHLETE")){
+                    participates.add(new superAthlete(lineList.get(i)[0],lineList.get(i)[1],Integer.parseInt(lineList.get(i)[2]),lineList.get(i)[3]));
+            }else if(lineList.get(i)[4].equals("OFFICIAL")){
+                    participates.add(new Official(lineList.get(i)[0],lineList.get(i)[1],Integer.parseInt(lineList.get(i)[2]),lineList.get(i)[3]));
+            }
+        }
+
+        return participates;
     }
 
 }

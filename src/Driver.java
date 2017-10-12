@@ -35,12 +35,6 @@ class Driver {
     //the operator of the file
     private BufferedWriter out = new BufferedWriter(new FileWriter(storedData));
 
-    Driver() throws IOException {
-        if (!storedData.exists()) {
-            storedData.createNewFile();
-        }// if the fire not exists,create new one
-    }
-
       //out.write("S"+s[runTimes]+", ");
 
     /**
@@ -50,6 +44,11 @@ class Driver {
      */
     Driver(ArrayList<Participates> participates) throws IOException {
         this.allParticipates = participates;
+
+        if (!storedData.exists()) {
+            storedData.createNewFile();
+            // if the fire not exists,create new one
+        }
     }
 
     /**
