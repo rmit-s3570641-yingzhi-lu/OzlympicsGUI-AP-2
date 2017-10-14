@@ -45,7 +45,7 @@ public class SwimController implements Initializable{
 
     //get all athletes attend the game
     ArrayList<Participates> participates=readTXTData.seperateData();
-    private Driver driver = new Driver(participates);
+    public Driver driver = new Driver(participates);
     Participates referee; // to store the referee
 
     //An array List to store the athlete attend the swim game
@@ -99,6 +99,8 @@ public class SwimController implements Initializable{
                 bw.write(p.getID()+" "+p.getName()+" "+p.getAge()+" "+p.getState()+"       Time: "+p.getRunningTime()+"        score: "+p.getScore());
                 bw.newLine();
             }
+
+            bw.newLine();
         } catch (IOException e) {
             e.printStackTrace();
 
@@ -236,6 +238,17 @@ public class SwimController implements Initializable{
         athlete10.setText(pAttendSwim.get(9).getID()+" "+ pAttendSwim.get(9).getName());
         athlete11.setText(pAttendSwim.get(10).getID()+" "+ pAttendSwim.get(10).getName());
         athlete12.setText(pAttendSwim.get(11).getID()+" "+ pAttendSwim.get(11).getName());
+
+    }
+
+    @FXML public Button showAll;
+    @FXML public void btnShowAll(){
+        ObservableList<String> items = FXCollections.observableArrayList ();
+        for (Participates p :
+                participates) {
+            items.add(p.getID() + " " + p.getName() + " " + p.getAge() + " " + p.getState() + "        score: " + p.getScore());
+        }
+        swimResult.setItems(items);
 
     }
 

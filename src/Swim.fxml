@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Group?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="swimPane" prefHeight="703.0" prefWidth="974.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SwimController">
+<AnchorPane fx:id="swimPane" prefHeight="703.0" prefWidth="974.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SwimController">
    <children>
-      <Label alignment="CENTER" layoutX="528.0" layoutY="40.0" prefHeight="44.0" prefWidth="320.0" text="Here is the results of swim game" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="528.0" layoutY="40.0" prefHeight="44.0" prefWidth="320.0" text="Results of swim game" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="19.0" />
          </font>
@@ -41,6 +38,7 @@
       <Button fx:id="btnSave" layoutX="577.0" layoutY="630.0" mnemonicParsing="false" onAction="#btnSaveAction" text="SAVE" textAlignment="CENTER" />
       <Button fx:id="btnStartGame" layoutX="124.0" layoutY="540.0" mnemonicParsing="false" onAction="#btnStartGameAction" prefHeight="44.0" prefWidth="206.0" text="START GAME" />
       <Button fx:id="generateAthlete" layoutX="95.0" layoutY="107.0" mnemonicParsing="false" onAction="#btnGenerateAction" prefHeight="44.0" prefWidth="264.0" text="Generate Athlete Below" />
+      <Button fx:id="showAll" layoutX="118.0" layoutY="630.0" mnemonicParsing="false" onAction="#btnShowAll" prefHeight="27.0" prefWidth="218.0" text="Show All Athlete Scores" />
    </children>
 
 </AnchorPane>

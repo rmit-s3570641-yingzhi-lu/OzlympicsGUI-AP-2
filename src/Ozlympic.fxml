@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="974.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="OzlympicController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="974.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OzlympicController">
    <children>
       <TabPane prefHeight="750.0" prefWidth="974.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-            <Tab fx:id="swimTab" closable="false" text="Swim">
+            <Tab fx:id="swimTab" closable="false" onSelectionChanged="#initializeController" text="Swim">
                <content>
                    <fx:include source="Swim.fxml" />
                </content>
             </Tab>
-            <Tab fx:id="runTab" closable="false" text="Run">
+            <Tab fx:id="runTab" closable="false" onSelectionChanged="#initializeController" text="Run">
                <content>
                    <fx:include source="Run.fxml" />
                </content>
             </Tab>
-            <Tab fx:id="cycleTab" closable="false" text="Cycle">
+            <Tab fx:id="cycleTab" closable="false" onSelectionChanged="#initializeController" text="Cycle">
                <content>
                    <fx:include source="Cycle.fxml" />
                </content>

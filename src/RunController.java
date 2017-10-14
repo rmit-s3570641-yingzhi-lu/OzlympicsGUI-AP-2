@@ -45,7 +45,7 @@ public class RunController implements Initializable{
 
     //get all athletes attend the game
     ArrayList<Participates> participates=readTXTData.seperateData();
-    private Driver driver = new Driver(participates);
+    public Driver driver = new Driver(participates);
     Participates referee; // to store the referee
 
     //An array List to store the athlete attend the swim game
@@ -66,7 +66,7 @@ public class RunController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        driver.setType("cycling");
+        driver.setType("running");
         generateAthlete.setDisable(false);
         btnStartGame.setDisable(true);
         btnSave.setDisable(true);
@@ -84,10 +84,10 @@ public class RunController implements Initializable{
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/gameResults.txt", true))) {
 
             if(GAME_TIMES<10){
-                bw.write("Game ID : C0"+ GAME_TIMES);
+                bw.write("Game ID : R0"+ GAME_TIMES);
                 bw.newLine();
             }else{
-                bw.write("Game ID : C"+ GAME_TIMES);
+                bw.write("Game ID : R"+ GAME_TIMES);
                 bw.newLine();
             }
 
@@ -99,6 +99,8 @@ public class RunController implements Initializable{
                 bw.write(p.getID()+" "+p.getName()+" "+p.getAge()+" "+p.getState()+"       Time: "+p.getRunningTime()+"        score: "+p.getScore());
                 bw.newLine();
             }
+
+            bw.newLine();
         } catch (IOException e) {
             e.printStackTrace();
 
@@ -236,6 +238,17 @@ public class RunController implements Initializable{
         athlete10.setText(pAttendRun.get(9).getID()+" "+ pAttendRun.get(9).getName());
         athlete11.setText(pAttendRun.get(10).getID()+" "+ pAttendRun.get(10).getName());
         athlete12.setText(pAttendRun.get(11).getID()+" "+ pAttendRun.get(11).getName());
+
+    }
+
+    @FXML public Button showAll;
+    @FXML public void btnShowAll(){
+        ObservableList<String> items = FXCollections.observableArrayList ();
+        for (Participates p :
+                participates) {
+            items.add(p.getID() + " " + p.getName() + " " + p.getAge() + " " + p.getState() + "        score: " + p.getScore());
+        }
+        runResult.setItems(items);
 
     }
 
