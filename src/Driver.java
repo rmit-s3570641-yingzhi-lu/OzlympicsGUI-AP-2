@@ -7,22 +7,57 @@ import java.util.*;
 class Driver {
 
     private int choice;// the choice of the menu
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     private String type; //the type of the game selected
     private int athleteChoice = 0;//the choice of athlete
-    private int numberOfAthlete = 0;// the number of athlete
+
+    private int numberOfAthlete = 12;// the number of athlete
     private int number = 1;// the number of running times
 
+    public Participates getReferee() {
+        return referee;
+    }
+
     private Participates referee;
+
 
     //athlete who attend current competition
     private ArrayList<Participates> athlete = new ArrayList<>();
     private ArrayList<Participates> sortedAthlete = new ArrayList<>();
+
+    public ArrayList<Participates> getAthlete() {
+        return athlete;
+    }
+
+    public ArrayList<Participates> getSortedAthlete() {
+        return sortedAthlete;
+    }
 
     //store the data passed by
     private ArrayList<Participates> swimmingAttender = new ArrayList<>();
     private ArrayList<Participates> runningAttender = new ArrayList<>();
     private ArrayList<Participates> cyclistAttender = new ArrayList<>();
     private ArrayList<Participates> official = new ArrayList<>();
+
+    public ArrayList<Participates> getSwimmingAttender() {
+        return swimmingAttender;
+    }
+
+    public ArrayList<Participates> getRunningAttender() {
+        return runningAttender;
+    }
+
+    public ArrayList<Participates> getCyclistAttender() {
+        return cyclistAttender;
+    }
+
+    public ArrayList<Participates> getOfficial() {
+        return official;
+    }
 
     //the participants of current show
     private ArrayList<Participates> allParticipates = new ArrayList<>();
@@ -31,12 +66,6 @@ class Driver {
     private HashSet<Game> gameHistory = new HashSet<>();
 
 
-    private File storedData = new File("gameResults.txt"); // create a new file
-    //the operator of the file
-    private BufferedWriter out = new BufferedWriter(new FileWriter(storedData));
-
-      //out.write("S"+s[runTimes]+", ");
-
     /**
      * a constructor to initialize the whole data
      *
@@ -44,11 +73,6 @@ class Driver {
      */
     Driver(ArrayList<Participates> participates) throws IOException {
         this.allParticipates = participates;
-
-        if (!storedData.exists()) {
-            storedData.createNewFile();
-            // if the fire not exists,create new one
-        }
     }
 
     /**
@@ -94,7 +118,7 @@ class Driver {
     /**
      * separate data to different kind
      */
-    private void generateAthleteAttendSwimming() {
+    public void generateAthleteAttendSwimming() {
         swimmingAttender.clear();
         for (Participates attendAthlete : allParticipates) {
             if (attendAthlete instanceof Swimmer) {
@@ -107,7 +131,7 @@ class Driver {
         }
     }
 
-    private void generateAthleteAttendRunning() {
+    public void generateAthleteAttendRunning() {
         runningAttender.clear();
         for (Participates attendAthlete : allParticipates) {
             if (attendAthlete instanceof Sprinter) {
@@ -120,7 +144,7 @@ class Driver {
         }
     }
 
-    private void generateAthleteAttendCyclist() {
+    public void generateAthleteAttendCyclist() {
         cyclistAttender.clear();
         for (Participates attendAthlete : allParticipates) {
             if (attendAthlete instanceof Cyclist) {
@@ -133,7 +157,7 @@ class Driver {
         }
     }
 
-    private void generateOfficial() {
+    public void generateOfficial() {
         official.clear();
         for (Participates attendAthlete : allParticipates) {
             if (attendAthlete instanceof Official) {
@@ -141,7 +165,6 @@ class Driver {
             }
         }
     }
-
 
     /**
      * primary method doing sorting the scores
@@ -191,7 +214,7 @@ class Driver {
         }
     }
 
-    private Participates generateReferee() {
+    public Participates generateReferee() {
         //print the official member of this game
         Random random = new Random();
         int offNumber = random.nextInt(official.size());
@@ -202,7 +225,7 @@ class Driver {
     /**
      * method to judge if predict the right winner
      */
-    private void ifWin() {
+    public void ifWin() {
 
         //print the predict result
         System.out.println();
@@ -278,7 +301,7 @@ class Driver {
      *
      * @param unsortedAthlete unsortedathlete
      */
-    private void sortAthlete(ArrayList<Participates> unsortedAthlete) {
+    public void sortAthlete(ArrayList<Participates> unsortedAthlete) {
 
         sortedAthlete.clear();
         //get all the running time of attend athletes
@@ -358,7 +381,7 @@ class Driver {
         return list;
     }
 
-    private void generateNumberOfAthlete() throws outboundException {
+/*    private void generateNumberOfAthlete() throws outboundException {
 
         Random randomGenerate = new Random();
         int randomNumber = randomGenerate.nextInt(10);
@@ -372,7 +395,7 @@ class Driver {
         }
 
         //System.out.println(numberOfAthlete);
-    }
+    }*/
 
     private void storeHistory() {
         switch (type) {
@@ -420,7 +443,7 @@ class Driver {
                     case 1:
                         showGameSelectMenu();
                         selectGameLoop();
-                        generateNumberOfAthlete();
+                        //generateNumberOfAthlete();
                         getAttendAthlete();
                         generateOfficial();
                         referee = generateReferee();
@@ -442,9 +465,7 @@ class Driver {
                         return;
                 }
 
-            } catch (selectOptionException | outboundException e) {
-                System.out.println();
-            }  catch (Exception e){
+            } catch (Exception e){
                 System.out.println("Please input number to select! ");
             }
         } while (true);
@@ -466,19 +487,10 @@ class Driver {
             hashSet.add(random.nextInt(currentAthlete.size()));
         }
         values = hashSet.toArray();
-
-/*        // 遍历数组并打印数据
-        for(int i = 0;i < values.length;i++){
-            System.out.print(values[i] + "\t");
-
-            if(( i + 1 ) % 10 == 0){
-                System.out.println("\n");
-            }
-        }*/
         return values;
     }
 
-    private void getAttendAthlete() {
+    public void getAttendAthlete() {
 
         Object[] values;
 

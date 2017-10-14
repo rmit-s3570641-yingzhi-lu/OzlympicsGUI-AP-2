@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="974.0" xmlns:fx="http://javafx.com/fxml">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="974.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="OzlympicController">
    <children>
       <TabPane prefHeight="750.0" prefWidth="974.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
             <Tab fx:id="swimTab" closable="false" text="Swim">
-                <fx:include source="Swim.fxml"/>
+               <content>
+                   <fx:include source="Swim.fxml" />
+               </content>
             </Tab>
             <Tab fx:id="runTab" closable="false" text="Run">
-                <fx:include source="Run.fxml"/>
+               <content>
+                   <fx:include source="Run.fxml" />
+               </content>
             </Tab>
             <Tab fx:id="cycleTab" closable="false" text="Cycle">
-                <fx:include source="Cycle.fxml"/>
+               <content>
+                   <fx:include source="Cycle.fxml" />
+               </content>
             </Tab>
         </tabs>
       </TabPane>
