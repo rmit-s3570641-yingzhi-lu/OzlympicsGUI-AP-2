@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="runPane" prefHeight="703.0" prefWidth="974.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RunController">
+<AnchorPane fx:id="runPane" prefHeight="703.0" prefWidth="974.0" xmlns:fx="http://javafx.com/fxml" fx:controller="RunController">
    <children>
       <Label alignment="CENTER" layoutX="528.0" layoutY="40.0" prefHeight="44.0" prefWidth="320.0" text="Here is the results of run game" textAlignment="CENTER">
          <font>

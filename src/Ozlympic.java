@@ -12,7 +12,13 @@ public class Ozlympic extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Ozlympic.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Ozlympic.fxml"));
+
+        //controller
+        loader.setController(new OzlympicController());
+
+        Parent root =loader.load();
+
         primaryStage.setTitle("Ozlympic");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -30,7 +36,6 @@ public class Ozlympic extends Application {
         //driver.mainMenu();
 
     }
-
     //From previous assignment
 
 }

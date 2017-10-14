@@ -3,6 +3,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,6 +28,7 @@ public class SwimController  implements Initializable{
     @FXML public static Button btnStartGame;
 
     @FXML public static ListView swimResult;
+    @FXML  public AnchorPane swimPane;
 
 
     @Override
